@@ -1,0 +1,28 @@
+body { font-family: 'Helvetica' }
+table {
+  margin: 0 auto;
+  border-radius:10px;
+}
+td {
+  border: 1px solid black;
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  font-size: 8em;
+}
+
+#zero{
+  /*background-color: red;*/
+}
+
+#one{
+  /*background-color: blue;*/
+}
+
+#two{
+  /*background-color: green;*/
+}
+
+#three{
+  /*background-color: yellow;*/
+}
