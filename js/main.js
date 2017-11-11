@@ -11,20 +11,16 @@ var fourColours = ['red','blue','green','yellow'];
 var i = 0;
 $startButton.click(function(){
 
-  // boxes[1].style.backgroundColor = fourColours[1];
-  // $zeroBox.css('background-color','red');
-  // $oneBox.css('background-color','blue');
-  // $twoBox.css('background-color','green');
-  // $threeBox.css('background-color','yellow');
-
   var id = setInterval(frame,1000);
   function frame(){
+    if(i==4){
+      clearInterval(id);
+      $boxes.css('background-color','white')
+    } else {
     boxes[i].style.backgroundColor = fourColours[i];
     i++;
+   }
   }
-
-
-
 
 })
 
