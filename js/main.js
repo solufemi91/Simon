@@ -9,20 +9,29 @@ var $boxes = $('.boxes');
 var boxes = document.getElementsByClassName('boxes');
 var fourColours = ['red','blue','green','yellow'];
 var i = 0;
-$startButton.click(function(){
+var randomNumbers = [0,1,2,3]
 
+
+$startButton.click(function(){
+  i=0;
   var id = setInterval(frame,1000);
   function frame(){
-    if(i==4){
+    if(randomNumbers.length == 0){
       clearInterval(id);
-      $boxes.css('background-color','white')
+      $boxes.css('background-color','white');
     } else {
+
+    i = Math.floor(Math.random() * randomNumbers.length);
+    console.log(i);
     boxes[i].style.backgroundColor = fourColours[i];
+    randomNumbers.splice(i,1);
     i++;
    }
   }
 
 })
+
+
 
 
 });
