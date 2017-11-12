@@ -1,36 +1,70 @@
 $(function(event) {
 
 var $startButton = $('#startButton');
-var $zeroBox = $('#zero');
-var $oneBox = $('#one');
-var $twoBox = $('#two');
-var $threeBox = $('#three');
-var $boxes = $('.boxes');
 var boxes = document.getElementsByClassName('boxes');
+var $boxes = $('.boxes');
+var $redBox = $('#red');
+var $blueBox = $('#blue');
+var $greenBox = $('#green');
+var $yellowBox = $('#yellow');
 var fourColours = ['red','blue','green','yellow'];
-var i = 0;
-var randomNumbers = [0,1,2,3]
+var playersChoice = [];
+var computersChoice = [];
+var randomBox = 0;
+var randomColor = 0
+var counter = 0;
+var id = 0;
 
+
+$boxes.click(function(){
+  var boxIClicked = $(this).attr('id');
+  $(this).css('backgroundColor',boxIClicked);
+
+  playersChoice.push(boxIClicked);
+  console.log(playersChoice);
+})
 
 $startButton.click(function(){
-  i=0;
-  var id = setInterval(frame,1000);
-  function frame(){
-    if(randomNumbers.length == 0){
-      clearInterval(id);
-      $boxes.css('background-color','white');
-    } else {
 
-    i = Math.floor(Math.random() * randomNumbers.length);
-    console.log(i);
-    boxes[i].style.backgroundColor = fourColours[i];
-    randomNumbers.splice(i,1);
-    i++;
-   }
+  var id = setInterval(frame,500);
+  function frame(){
+    if(randomColor != 0){
+      randomBox.style.backgroundColor = 'white';
+      randomColor = 0;
+      counter++
+
+
+      checkCounter();
+
+    } else{
+    randomBox = boxes[Math.floor(Math.random() * 4)]
+    randomColor = randomBox.getAttribute('id')
+    computersChoice.push(randomColor);
+    console.log(computersChoice)
+    randomBox.style.backgroundColor = randomColor;
+    /// wait a few milli seconds and then change it to white
+    
+  }
+  function checkCounter(){
+    if(counter == 4){
+      clearInterval(id);
+
+    }
+  }
+
   }
 
 })
 
+
+
+
+// press a button
+// any combination of the boxes should flash 4 times
+// a notification to tell the player when he should start copying the pattern
+//a way of recording what the player has entered
+// a submit button
+// a message indicating whether the answer was right or not
 
 
 

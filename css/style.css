@@ -11,18 +11,18 @@ td {
   font-size: 8em;
 }
 
-#zero{
-  /*background-color: red;*/
+#red{
+  border: 1px solid red;
 }
 
-#one{
-  /*background-color: blue;*/
+#blue{
+  border: 1px solid blue;
 }
 
-#two{
-  /*background-color: green;*/
+#green{
+  border: 1px solid green;
 }
 
-#three{
-  /*background-color: yellow;*/
+#yellow{
+  border: 1px solid yellow;
 }
