@@ -15,14 +15,17 @@ var randomColor = 0
 var counter = 0;
 var id = 0;
 
-
+/// player making their choice about what to pick
 $boxes.click(function(){
   var boxIClicked = $(this).attr('id');
   $(this).css('backgroundColor',boxIClicked);
 
   playersChoice.push(boxIClicked);
+  // compareArrays();
   console.log(playersChoice);
 })
+
+//random colors being genrated each time.
 
 $startButton.click(function(){
 
@@ -43,7 +46,7 @@ $startButton.click(function(){
     console.log(computersChoice)
     randomBox.style.backgroundColor = randomColor;
     /// wait a few milli seconds and then change it to white
-    
+
   }
   function checkCounter(){
     if(counter == 4){
@@ -56,6 +59,12 @@ $startButton.click(function(){
 
 })
 
+// compare both arrays
+// function compareArrays(){
+//
+//   if(computersChoice[i] == playersChoice[i])
+//   ++
+// }
 
 
 
