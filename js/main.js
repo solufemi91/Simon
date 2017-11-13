@@ -14,6 +14,7 @@ var randomBox = 0;
 var randomColor = 0;
 var counter = 0;
 var id = 0;
+var indexCounter = -1;
 
 /// player making their choice about what to pick
 $boxes.click(function(){
@@ -21,7 +22,8 @@ $boxes.click(function(){
   $(this).css('backgroundColor',boxIClicked);
 
   playersChoice.push(boxIClicked);
-  // compareArrays();
+  indexCounter++
+  compareArrays();
   console.log(playersChoice);
 })
 
@@ -52,7 +54,7 @@ $startButton.click(function(){
     if(counter == 4){
       clearInterval(id);
       playersChoice = [];
-      computersChoice = [];
+      // computersChoice = [];
       counter = 0;
 
     }
@@ -62,7 +64,16 @@ $startButton.click(function(){
 
 })
 
+function compareArrays(){
+  //if this value is the same as the value in the other array
+  //console log 'correct'
+  if(computersChoice[indexCounter] === playersChoice[indexCounter]){
+  console.log('correct')
+} else {
+  console.log('incorrect');
 
+}
+}
 
 
 
