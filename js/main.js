@@ -31,6 +31,10 @@ $boxes.click(function(){
 
 $startButton.click(function(){
 
+  indexCounter = -1;
+  playersChoice = [];
+  computersChoice = [];
+  $('.boxes').css('backgroundColor','white');
   var id = setInterval(frame,500);
   function frame(){
     if(randomColor != 0){
@@ -53,8 +57,6 @@ $startButton.click(function(){
   function checkCounter(){
     if(counter == 4){
       clearInterval(id);
-      playersChoice = [];
-      // computersChoice = [];
       counter = 0;
 
     }
