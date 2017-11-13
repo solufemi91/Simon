@@ -53,6 +53,7 @@ $startButton.click(function(){
       clearInterval(id);
       playersChoice = [];
       computersChoice = [];
+      counter = 0;
 
     }
   }
