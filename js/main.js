@@ -11,7 +11,7 @@ var fourColours = ['red','blue','green','yellow'];
 var playersChoice = [];
 var computersChoice = [];
 var randomBox = 0;
-var randomColor = 0
+var randomColor = 0;
 var counter = 0;
 var id = 0;
 
@@ -34,16 +34,16 @@ $startButton.click(function(){
     if(randomColor != 0){
       randomBox.style.backgroundColor = 'white';
       randomColor = 0;
-      counter++
+      counter++;
 
 
       checkCounter();
 
     } else{
-    randomBox = boxes[Math.floor(Math.random() * 4)]
-    randomColor = randomBox.getAttribute('id')
+    randomBox = boxes[Math.floor(Math.random() * 4)];
+    randomColor = randomBox.getAttribute('id');
     computersChoice.push(randomColor);
-    console.log(computersChoice)
+    console.log(computersChoice);
     randomBox.style.backgroundColor = randomColor;
     /// wait a few milli seconds and then change it to white
 
@@ -51,6 +51,8 @@ $startButton.click(function(){
   function checkCounter(){
     if(counter == 4){
       clearInterval(id);
+      playersChoice = [];
+      computersChoice = [];
 
     }
   }
@@ -59,21 +61,7 @@ $startButton.click(function(){
 
 })
 
-// compare both arrays
-// function compareArrays(){
-//
-//   if(computersChoice[i] == playersChoice[i])
-//   ++
-// }
 
-
-
-// press a button
-// any combination of the boxes should flash 4 times
-// a notification to tell the player when he should start copying the pattern
-//a way of recording what the player has entered
-// a submit button
-// a message indicating whether the answer was right or not
 
 
 
