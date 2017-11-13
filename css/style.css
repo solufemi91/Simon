@@ -26,3 +26,8 @@ td {
 #yellow{
   border: 1px solid yellow;
 }
+
+
+.displayMessage{
+  margin-top: 65px;
+}
