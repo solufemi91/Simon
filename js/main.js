@@ -15,6 +15,7 @@ var randomColor = 0;
 var counter = 0;
 var id = 0;
 var indexCounter = -1;
+var clickCounter = 0
 var $displayMessage = $('.displayMessage');
 
 /// player making their choice about what to pick
@@ -23,6 +24,7 @@ $boxes.click(function(){
   $(this).css('backgroundColor',boxIClicked);
   playersChoice.push(boxIClicked);
   indexCounter++
+  clickCounter++
   compareArrays();
   console.log(playersChoice);
 })
@@ -64,10 +66,10 @@ function compareArrays(){
 
   if(computersChoice[indexCounter] === playersChoice[indexCounter]){
   // console.log('correct');
-  $displayMessage.html('Correct');
+  $displayMessage.html('Correct ' + clickCounter + ' choice');
   } else {
   console.log('incorrect');
-  $displayMessage.html('Incorrect');
+  $displayMessage.html('Incorrect ' + clickCounter + ' choice');
   }
 }
 
@@ -77,6 +79,7 @@ function resetter(){
   playersChoice = [];
   computersChoice = [];
   $('.boxes').css('backgroundColor','white');
+  clickCounter = 0;
 
 }
 
