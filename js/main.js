@@ -23,13 +23,14 @@ $boxes.click(function(){
   var boxIClicked = $(this).attr('id');
   $(this).css('backgroundColor',boxIClicked);
   playersChoice.push(boxIClicked);
+  // each click create an index value for the two arrays when they are compared
   indexCounter++
   clickCounter++
   compareArrays();
   console.log(playersChoice);
 })
 
-//random colors being genrated each time.
+//random colors being genrated four times when the start button is clicked
 
 $startButton.click(function(){
 
@@ -51,6 +52,7 @@ $startButton.click(function(){
     /// wait a few milli seconds and then change it to white
 
   }
+  // once four flashes has happened, the timer is stopped
   function checkCounter(){
     if(counter == 4){
       clearInterval(id);
@@ -62,6 +64,8 @@ $startButton.click(function(){
 
 })
 
+// this function is called each time the player makes a choice. If a selection is correct, a
+// message is displayed saying that it is correct
 function compareArrays(){
 
   if(computersChoice[indexCounter] === playersChoice[indexCounter]){
@@ -73,6 +77,7 @@ function compareArrays(){
   }
 }
 
+// this function restets everything each time the button is pressed.
 function resetter(){
   $displayMessage.html('correct/incorrect');
   indexCounter = -1;
