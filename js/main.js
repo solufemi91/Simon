@@ -20,6 +20,7 @@ var correctClicks = 0;
 var $congratulationsMessage = $('#congratulations');
 var $displayMessage = $('.displayMessage');
 var $promptToEnter = $('#promptToEnter');
+var $numberOfClicksMade = $('#numberOfClicksMade');
 
 /// player making their choice about what to pick
 $boxes.click(function(){
@@ -78,9 +79,11 @@ function compareArrays(){
     $congratulationsMessage.html("Congrats You won this round! Click Start to play again")
   }
   $displayMessage.html('Score ' +  correctClicks);
+  $numberOfClicksMade.html('number of clicks made ' + clickCounter);
   } else {
-  
+
   $displayMessage.html('Score ' + correctClicks);
+  $numberOfClicksMade.html('number of clicks made ' + clickCounter);
   }
 }
 
@@ -88,7 +91,8 @@ function compareArrays(){
 function resetter(){
   $congratulationsMessage.html('')
   $promptToEnter.html('')
-  $displayMessage.html('correct/incorrect');
+  $displayMessage.html('');
+  $numberOfClicksMade.html('');
   indexCounter = -1;
   playersChoice = [];
   computersChoice = [];
