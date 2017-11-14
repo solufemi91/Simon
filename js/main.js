@@ -77,10 +77,10 @@ function compareArrays(){
   if(correctClicks==4){
     $congratulationsMessage.html("Congrats You won this round! Click Start to play again")
   }
-  $displayMessage.html('Correct ' + clickCounter + ' choice');
+  $displayMessage.html('Score ' +  correctClicks);
   } else {
-  console.log('incorrect');
-  $displayMessage.html('Incorrect ' + clickCounter + ' choice');
+  
+  $displayMessage.html('Score ' + correctClicks);
   }
 }
 
