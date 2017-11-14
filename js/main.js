@@ -17,6 +17,7 @@ var id = 0;
 var indexCounter = -1;
 var clickCounter = 0
 var $displayMessage = $('.displayMessage');
+var $promptToEnter = $('#promptToEnter');
 
 /// player making their choice about what to pick
 $boxes.click(function(){
@@ -57,6 +58,7 @@ $startButton.click(function(){
     if(counter == 4){
       clearInterval(id);
       counter = 0;
+      $promptToEnter.html('Copy the pattern')
     }
   }
 
@@ -79,6 +81,7 @@ function compareArrays(){
 
 // this function restets everything each time the button is pressed.
 function resetter(){
+  $promptToEnter.html('')
   $displayMessage.html('correct/incorrect');
   indexCounter = -1;
   playersChoice = [];
