@@ -16,6 +16,8 @@ var counter = 0;
 var id = 0;
 var indexCounter = -1;
 var clickCounter = 0
+var correctClicks = 0;
+var $congratulationsMessage = $('#congratulations');
 var $displayMessage = $('.displayMessage');
 var $promptToEnter = $('#promptToEnter');
 
@@ -71,7 +73,10 @@ $startButton.click(function(){
 function compareArrays(){
 
   if(computersChoice[indexCounter] === playersChoice[indexCounter]){
-  // console.log('correct');
+  correctClicks++;
+  if(correctClicks==4){
+    $congratulationsMessage.html("Congrats You won this round! Click Start to play again")
+  }
   $displayMessage.html('Correct ' + clickCounter + ' choice');
   } else {
   console.log('incorrect');
@@ -81,6 +86,7 @@ function compareArrays(){
 
 // this function restets everything each time the button is pressed.
 function resetter(){
+  $congratulationsMessage.html('')
   $promptToEnter.html('')
   $displayMessage.html('correct/incorrect');
   indexCounter = -1;
@@ -88,6 +94,7 @@ function resetter(){
   computersChoice = [];
   $('.boxes').css('backgroundColor','white');
   clickCounter = 0;
+  correctClicks = 0;
 
 }
 
