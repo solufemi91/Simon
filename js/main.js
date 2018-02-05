@@ -21,17 +21,21 @@ var $congratulationsMessage = $('#congratulations');
 var $displayMessage = $('.displayMessage');
 var $promptToEnter = $('#promptToEnter');
 var $numberOfClicksMade = $('#numberOfClicksMade');
+var level = 4
 
 /// player making their choice about what to pick
 $boxes.click(function(){
+  if(clickCounter < level){
   var boxIClicked = $(this).attr('id');
   $(this).css('backgroundColor',boxIClicked);
   playersChoice.push(boxIClicked);
   // each click create an index value for the two arrays when they are compared
-  indexCounter++
-  clickCounter++
-  compareArrays();
-  console.log(playersChoice);
+
+    indexCounter++
+    clickCounter++
+    compareArrays();
+    console.log(playersChoice);
+  }
 })
 
 //random colors being genrated four times when the start button is clicked
@@ -58,7 +62,7 @@ $startButton.click(function(){
   }
   // once four flashes has happened, the timer is stopped
   function checkCounter(){
-    if(counter == 4){
+    if(counter == level){
       clearInterval(id);
       counter = 0;
       $promptToEnter.html('Copy the pattern')
@@ -74,17 +78,34 @@ $startButton.click(function(){
 function compareArrays(){
 
   if(computersChoice[indexCounter] === playersChoice[indexCounter]){
-  correctClicks++;
-  if(correctClicks==4){
-    $congratulationsMessage.html("Congrats You won this round! Click Start to play again")
-  }
-  $displayMessage.html('Score ' +  correctClicks);
-  $numberOfClicksMade.html('number of clicks made ' + clickCounter);
-  } else {
+    correctClicks++;
+    if(correctClicks==level){
+      $congratulationsMessage.html("Congrats You won this round! Click Start to play again");
+      level++;
+    }
 
-  $displayMessage.html('Score ' + correctClicks);
-  $numberOfClicksMade.html('number of clicks made ' + clickCounter);
+    else if (clickCounter == level && correctClicks < level) {
+      $congratulationsMessage.html("Unfortunately you lost this round. Click start to try again")
+      $displayMessage.html('Score ' + correctClicks);
+      $numberOfClicksMade.html('number of clicks made ' + clickCounter);
+    }
+    $displayMessage.html('Score ' +  correctClicks);
+    $numberOfClicksMade.html('number of clicks made ' + clickCounter);
   }
+
+  else if (clickCounter == level && correctClicks < level){
+
+    $congratulationsMessage.html("Unfortunately you lost this round. Click start to try again")
+    $displayMessage.html('Score ' + correctClicks);
+    $numberOfClicksMade.html('number of clicks made ' + clickCounter);
+
+  }
+
+  else {
+    $displayMessage.html('Score ' + correctClicks);
+    $numberOfClicksMade.html('number of clicks made ' + clickCounter);
+  }
+
 }
 
 // this function restets everything each time the button is pressed.
