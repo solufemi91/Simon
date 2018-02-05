@@ -80,7 +80,7 @@ function compareArrays(){
   if(computersChoice[indexCounter] === playersChoice[indexCounter]){
     correctClicks++;
     if(correctClicks==level){
-      $congratulationsMessage.html("Congrats You won this round! Click Start to play again");
+      $congratulationsMessage.html("Level " + level + " passed! Click Start to proceed to next level");
       level++;
     }
 
