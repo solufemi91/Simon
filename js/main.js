@@ -17,6 +17,7 @@ var id = 0;
 var indexCounter = -1;
 var clickCounter = 0
 var correctClicks = 0;
+var incorrectClicks = 0;
 var $congratulationsMessage = $('#congratulations');
 var $displayMessage = $('.displayMessage');
 var $promptToEnter = $('#promptToEnter');
@@ -25,7 +26,7 @@ var level = 4
 
 /// player making their choice about what to pick
 $boxes.click(function(){
-  if(clickCounter < level){
+  if(clickCounter < level && incorrectClicks == 0){
   var boxIClicked = $(this).attr('id');
   $(this).css('backgroundColor',boxIClicked);
   playersChoice.push(boxIClicked);
@@ -94,7 +95,7 @@ function compareArrays(){
   }
 
   else if (computersChoice[indexCounter] !== playersChoice[indexCounter]){
-
+    incorrectClicks++
     $congratulationsMessage.html("Unfortunately you lost this round. Click start to try again")
     $displayMessage.html('Score ' + correctClicks);
     $numberOfClicksMade.html('number of clicks made ' + clickCounter);
@@ -127,6 +128,7 @@ function resetter(){
   $('.boxes').css('backgroundColor','white');
   clickCounter = 0;
   correctClicks = 0;
+  incorrectClicks = 0;
 
 }
 
