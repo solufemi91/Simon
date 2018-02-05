@@ -27,7 +27,23 @@ td {
   border: 1px solid yellow;
 }
 
+#promptToEnter{
+  text-align: center;
+}
+
 
 .displayMessage{
   margin-top: 65px;
+}
+
+
+#startButton{
+  margin-top: 26px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#congratulations{
+  text-align: center;
 }
