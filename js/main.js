@@ -22,7 +22,9 @@ var $congratulationsMessage = $('#congratulations');
 var $displayMessage = $('.displayMessage');
 var $promptToEnter = $('#promptToEnter');
 var $numberOfClicksMade = $('#numberOfClicksMade');
-var level = 4
+var level = 4;
+var $scoreboard = $('#scoreboard')
+var totalscore = 0;
 
 /// player making their choice about what to pick
 $boxes.click(function(){
@@ -83,14 +85,16 @@ function compareArrays(){
     if(correctClicks==level){
       $congratulationsMessage.html("Level " + level + " passed! Click Start to proceed to next level");
       level++;
+      totalscore += correctClicks;
+      $scoreboard.html('Score: ' + totalscore)
     }
 
     else if (clickCounter == level && correctClicks < level) {
       $congratulationsMessage.html("Unfortunately you lost this round. Click start to try again")
-      $displayMessage.html('Score ' + correctClicks);
+      // $displayMessage.html('Score ' + correctClicks);
       $numberOfClicksMade.html('number of clicks made ' + clickCounter);
     }
-    $displayMessage.html('Score ' +  correctClicks);
+    // $displayMessage.html('Score ' +  correctClicks);
     $numberOfClicksMade.html('number of clicks made ' + clickCounter);
   }
 
@@ -110,7 +114,7 @@ function compareArrays(){
   // }
 
   else {
-    $displayMessage.html('Score ' + correctClicks);
+    // $displayMessage.html('Score ' + correctClicks);
     $numberOfClicksMade.html('number of clicks made ' + clickCounter);
   }
 
@@ -120,7 +124,7 @@ function compareArrays(){
 function resetter(){
   $congratulationsMessage.html('')
   $promptToEnter.html('')
-  $displayMessage.html('');
+  // $displayMessage.html('');
   $numberOfClicksMade.html('');
   indexCounter = -1;
   playersChoice = [];
