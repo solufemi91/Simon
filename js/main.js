@@ -32,7 +32,8 @@ $boxes.click(function(){
   if(clickCounter < level && incorrectClicks == 0){
   var boxIClicked = $(this).attr('id');
   $(this).css('backgroundColor',boxIClicked);
-  $clickRegister.html(boxIClicked)
+  $clickRegister.html(boxIClicked);
+  $clickRegister.css('color',boxIClicked);
   playersChoice.push(boxIClicked);
   // each click create an index value for the two arrays when they are compared
 
@@ -94,10 +95,10 @@ function compareArrays(){
     else if (clickCounter == level && correctClicks < level) {
       $congratulationsMessage.html("Unfortunately you lost this round. Click start to try again")
       // $displayMessage.html('Score ' + correctClicks);
-      $numberOfClicksMade.html('number of clicks made ' + clickCounter);
+      // $numberOfClicksMade.html('number of clicks made ' + clickCounter);
     }
     // $displayMessage.html('Score ' +  correctClicks);
-    $numberOfClicksMade.html('number of clicks made ' + clickCounter);
+    // $numberOfClicksMade.html('number of clicks made ' + clickCounter);
   }
 
   else if (computersChoice[indexCounter] !== playersChoice[indexCounter]){
@@ -117,7 +118,7 @@ function compareArrays(){
 
   else {
     // $displayMessage.html('Score ' + correctClicks);
-    $numberOfClicksMade.html('number of clicks made ' + clickCounter);
+    // $numberOfClicksMade.html('number of clicks made ' + clickCounter);
   }
 
 }
@@ -127,7 +128,7 @@ function resetter(){
   $congratulationsMessage.html('')
   $promptToEnter.html('')
   // $displayMessage.html('');
-  $numberOfClicksMade.html('');
+  // $numberOfClicksMade.html('');
   indexCounter = -1;
   playersChoice = [];
   computersChoice = [];

@@ -51,3 +51,7 @@ td {
 .boxes{
   border-radius: 5px;
 }
+
+#clickRegister{
+  color: black;
+}
