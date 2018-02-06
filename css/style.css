@@ -4,7 +4,7 @@ table {
   border-radius:10px;
 }
 td {
-  
+
   width: 200px;
   height: 200px;
   text-align: center;
@@ -46,4 +46,8 @@ td {
 
 #congratulations{
   text-align: center;
+}
+
+.boxes{
+  border-radius: 5px;
 }

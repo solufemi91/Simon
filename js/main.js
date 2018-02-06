@@ -25,12 +25,14 @@ var $numberOfClicksMade = $('#numberOfClicksMade');
 var level = 4;
 var $scoreboard = $('#scoreboard')
 var totalscore = 0;
+var $clickRegister = $('#clickRegister')
 
 /// player making their choice about what to pick
 $boxes.click(function(){
   if(clickCounter < level && incorrectClicks == 0){
   var boxIClicked = $(this).attr('id');
   $(this).css('backgroundColor',boxIClicked);
+  $clickRegister.html(boxIClicked)
   playersChoice.push(boxIClicked);
   // each click create an index value for the two arrays when they are compared
 
