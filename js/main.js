@@ -37,7 +37,7 @@ $boxes.click(function(){
 
   // insert code to make the the click register flashes
   function clickreg() {
-    var id10 = setInterval(frame,500);
+    var id10 = setInterval(frame,200);
 
     function frame(){
       if($clickRegister.html() != ''){
