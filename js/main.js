@@ -132,7 +132,7 @@ function compareArrays(){
     incorrectClicks++
     $congratulationsMessage.html("Unfortunately you lost this round. Click start to try again")
     $displayMessage.html('Score ' + correctClicks);
-    $numberOfClicksMade.html('number of clicks made ' + clickCounter);
+    // $numberOfClicksMade.html('number of clicks made ' + clickCounter);
 
   }
   // else if (clickCounter == level && correctClicks < level){
