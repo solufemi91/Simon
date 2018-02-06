@@ -54,4 +54,6 @@ td {
 
 #clickRegister{
   color: black;
+  width: 50px;
+  display: inline-block;
 }

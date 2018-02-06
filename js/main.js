@@ -26,14 +26,41 @@ var level = 4;
 var $scoreboard = $('#scoreboard')
 var totalscore = 0;
 var $clickRegister = $('#clickRegister')
+var boxIClicked = 0;
+var clickRegCount = 0;
 
 /// player making their choice about what to pick
 $boxes.click(function(){
   if(clickCounter < level && incorrectClicks == 0){
   var boxIClicked = $(this).attr('id');
   $(this).css('backgroundColor',boxIClicked);
-  $clickRegister.html(boxIClicked);
-  $clickRegister.css('color',boxIClicked);
+
+  // insert code to make the the click register flashes
+  function clickreg() {
+    var id10 = setInterval(frame,500);
+
+    function frame(){
+      if($clickRegister.html() != ''){
+        $clickRegister.html('')
+        clickRegCount++
+        checkClickReg()
+      }
+      else {
+      $clickRegister.html(boxIClicked);
+      $clickRegister.css('color',boxIClicked);
+      }
+    }
+    function checkClickReg(){
+      if(clickRegCount == 1){
+      clearInterval(id10);
+      clickRegCount = 0;
+      }
+    }
+
+  };
+  clickreg();
+  // $clickRegister.html(boxIClicked);
+  // $clickRegister.css('color',boxIClicked);
   playersChoice.push(boxIClicked);
   // each click create an index value for the two arrays when they are compared
 
