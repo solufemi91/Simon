@@ -4,7 +4,7 @@ table {
   border-radius:10px;
 }
 td {
-  border: 1px solid black;
+
   width: 200px;
   height: 200px;
   text-align: center;
@@ -27,7 +27,37 @@ td {
   border: 1px solid yellow;
 }
 
+#promptToEnter{
+  text-align: center;
+}
+
 
 .displayMessage{
   margin-top: 65px;
+}
+
+
+#startButton{
+  margin-top: 26px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#congratulations{
+  text-align: center;
+}
+
+.boxes{
+  border-radius: 5px;
+}
+
+#clickRegister{
+  color: black;
+  width: 50px;
+  display: inline-block;
+}
+
+.clickRegisterDiv{
+  height: 60px;
 }
