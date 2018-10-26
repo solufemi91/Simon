@@ -104,8 +104,6 @@ $(function(event) {
 
   // once the quantity of flashes is the same as the level number, the flashing stops
 
-
-
   })
 
   // this is a click event against the boxes
