@@ -28,6 +28,7 @@ $(function(event) {
   var $clickRegister = $('#clickRegister')
   var boxIClicked = 0;
   var clickRegCount = 0;
+  var id = 0;
 
   // the compareArrays method compares the computer choice to the players choice
   function compareArrays(){
@@ -66,39 +67,44 @@ $(function(event) {
     correctClicks = 0;
     incorrectClicks = 0;
   }
+
+  function frame(){
+    // if a box is shaded a colour then change it to white
+    if(randomColor != 0){
+      randomBox.style.backgroundColor = 'white';
+      randomColor = 0;
+      counter++;
+      checkCounter();
+
+    } else {
+
+      //selects a random box, fills it with a colour
+      randomBox = boxes[Math.floor(Math.random() * 4)];
+      randomColor = randomBox.getAttribute('id');
+      computersChoice.push(randomColor);
+      console.log(computersChoice);
+      randomBox.style.backgroundColor = randomColor;
+
+    }
+  }
+
+  function checkCounter(){
+    if(counter == level){
+      clearInterval(id);
+      counter = 0;
+      $promptToEnter.html('Copy the pattern')
+    }
+  }
 // clicking the start button makes the colours flash in a random order
   $startButton.click(function(){
 
     resetter();
     // the frame function executes every half a second. It enables the colurs to flash
-    var id = setInterval(frame,500);
-    function frame(){
-      // if a box is shaded a colour then change it to white
-      if(randomColor != 0){
-        randomBox.style.backgroundColor = 'white';
-        randomColor = 0;
-        counter++;
-        checkCounter();
+    id = setInterval(frame,500);
 
-      } else {
-
-        //selects a random box, fills it with a colour
-        randomBox = boxes[Math.floor(Math.random() * 4)];
-        randomColor = randomBox.getAttribute('id');
-        computersChoice.push(randomColor);
-        console.log(computersChoice);
-        randomBox.style.backgroundColor = randomColor;
-
-      }
   // once the quantity of flashes is the same as the level number, the flashing stops
-      function checkCounter(){
-        if(counter == level){
-          clearInterval(id);
-          counter = 0;
-          $promptToEnter.html('Copy the pattern')
-        }
-      }
-    }
+
+
 
   })
 
