@@ -29,14 +29,86 @@ $(function(event) {
   var boxIClicked = 0;
   var clickRegCount = 0;
 
-/// player making their choice about what to pick. This code changes highlights the box that is clicked. This block of
-// code is excuted each time the player clicks a box
+  // the compareArrays method compares the computer choice to the players choice
+  function compareArrays(){
+
+    if(computersChoice[indexCounter] === playersChoice[indexCounter]){
+      correctClicks++;
+      // for e.g, on level 8, if 8 correct clicks are made, an alert message is displayed saying that the player has won the level of the game
+      if(correctClicks==level){
+        $congratulationsMessage.html("Level " + level + " passed! Click Start to proceed to next level");
+        level++;
+        totalscore += correctClicks;
+        $scoreboard.html('Score: ' + totalscore)
+      }
+
+    }
+
+    // this block of code is executed as soon as an incorrect choice is made
+    else {
+      incorrectClicks++
+      $congratulationsMessage.html("Unfortunately you lost this round. Click start to try again")
+      $displayMessage.html('Score ' + correctClicks);
+
+    }
+
+  }
+
+// this function restets everything each time the start button is pressed.
+  function resetter(){
+    $congratulationsMessage.html('')
+    $promptToEnter.html('')
+    indexCounter = -1;
+    playersChoice = [];
+    computersChoice = [];
+    $('.boxes').css('backgroundColor','white');
+    clickCounter = 0;
+    correctClicks = 0;
+    incorrectClicks = 0;
+  }
+// clicking the start button makes the colours flash in a random order
+  $startButton.click(function(){
+
+    resetter();
+    // the frame function executes every half a second. It enables the colurs to flash
+    var id = setInterval(frame,500);
+    function frame(){
+      // if a box is shaded a colour then change it to white
+      if(randomColor != 0){
+        randomBox.style.backgroundColor = 'white';
+        randomColor = 0;
+        counter++;
+        checkCounter();
+
+      } else {
+
+        //selects a random box, fills it with a colour
+        randomBox = boxes[Math.floor(Math.random() * 4)];
+        randomColor = randomBox.getAttribute('id');
+        computersChoice.push(randomColor);
+        console.log(computersChoice);
+        randomBox.style.backgroundColor = randomColor;
+
+      }
+  // once the quantity of flashes is the same as the level number, the flashing stops
+      function checkCounter(){
+        if(counter == level){
+          clearInterval(id);
+          counter = 0;
+          $promptToEnter.html('Copy the pattern')
+        }
+      }
+    }
+
+  })
+
+  // this is a click event against the boxes
   $boxes.click(function(){
     if(clickCounter < level && incorrectClicks == 0){
       var boxIClicked = $(this).attr('id');
       $(this).css('backgroundColor',boxIClicked);
 
-  // insert code to register the clicks that have been made. I.e. if a blue box is clicked, the user is informed that he clicked blue
+      // this function briefly displays the name of the box's colour that is clicked
       function clickreg() {
         var id10 = setInterval(frame,200);
 
@@ -63,9 +135,10 @@ $(function(event) {
 
       };
       clickreg();
-      // this kees a track of the colours that was selected by the user
+
+      // this stores the choices made by the player that shall be later compared to the computer's random selections
       playersChoice.push(boxIClicked);
-  // each click create an index value for the two arrays when they are compared
+
 
       indexCounter++
       clickCounter++
@@ -73,85 +146,4 @@ $(function(event) {
     }
   })
 
-//random colors being genrated four times when the start button is clicked
-
-  $startButton.click(function(){
-
-    resetter();
-    var id = setInterval(frame,500);
-    function frame(){
-      if(randomColor != 0){
-        randomBox.style.backgroundColor = 'white';
-        randomColor = 0;
-        counter++;
-        checkCounter();
-
-      } else {
-        randomBox = boxes[Math.floor(Math.random() * 4)];
-        randomColor = randomBox.getAttribute('id');
-        computersChoice.push(randomColor);
-        console.log(computersChoice);
-        randomBox.style.backgroundColor = randomColor;
-    /// wait a few milli seconds and then change it to white
-
-      }
-  // once four flashes has happened, the timer is stopped
-      function checkCounter(){
-        if(counter == level){
-          clearInterval(id);
-          counter = 0;
-          $promptToEnter.html('Copy the pattern')
-        }
-      }
-    }
-
-  })
-
-// this function is called each time the player makes a choice. If a selection is correct, a
-// message is displayed saying that it is correct
-  function compareArrays(){
-
-    if(computersChoice[indexCounter] === playersChoice[indexCounter]){
-      correctClicks++;
-      if(correctClicks==level){
-        $congratulationsMessage.html("Level " + level + " passed! Click Start to proceed to next level");
-        level++;
-        totalscore += correctClicks;
-        $scoreboard.html('Score: ' + totalscore)
-      }
-
-      else if (clickCounter == level && correctClicks < level) {
-        $congratulationsMessage.html("Unfortunately you lost this round. Click start to try again")
-      }
-    }
-
-    else if (computersChoice[indexCounter] !== playersChoice[indexCounter]){
-      incorrectClicks++
-      $congratulationsMessage.html("Unfortunately you lost this round. Click start to try again")
-      $displayMessage.html('Score ' + correctClicks);
-
-    }
-
-
-    else {
-      // $displayMessage.html('Score ' + correctClicks);
-      // $numberOfClicksMade.html('number of clicks made ' + clickCounter);
-    }
-
-  }
-
-// this function restets everything each time the button is pressed.
-  function resetter(){
-    $congratulationsMessage.html('')
-    $promptToEnter.html('')
-    // $displayMessage.html('');
-    // $numberOfClicksMade.html('');
-    indexCounter = -1;
-    playersChoice = [];
-    computersChoice = [];
-    $('.boxes').css('backgroundColor','white');
-    clickCounter = 0;
-    correctClicks = 0;
-    incorrectClicks = 0;
-  }
 });
