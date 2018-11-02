@@ -14,6 +14,6 @@ Then enter the main folder by :
 
 And then:
 
-    open index.html
+    open start.html
 
 This command will open the webpage for the game.
