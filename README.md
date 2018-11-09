@@ -10,7 +10,7 @@ After cloning the repository, run the following command in the terminal:
 
 Then enter the main folder by :
 
-    cd sparta-weekend-game
+    cd Simon
 
 And then:
 
