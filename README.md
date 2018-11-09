@@ -1,4 +1,4 @@
-# sparta-weekend-game-SIMON
+# SIMON game
 
 The aim was to try and build the game called Simon. Once the colours finished lighting up, the user is prompted to copy the pattern. If the user completes the pattern correctly, a prompt message appears saying that the user has won the round.
 
